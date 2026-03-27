@@ -97,9 +97,9 @@ fi
 
 echo "==> [1/9] Checking system dependencies and Server Memory (OOM Protection)..."
 # Removed silent failure outputs so that we can actually see if curl fails to install
-echo "    -> Updating package lists and installing curl/git..."
+echo "    -> Updating package lists and forcefully installing curl/wget/git..."
 DEBIAN_FRONTEND=noninteractive apt-get update -y
-DEBIAN_FRONTEND=noninteractive apt-get install -y curl git 
+DEBIAN_FRONTEND=noninteractive apt-get install -y --reinstall curl wget git ca-certificates
 
 echo "    -> Increasing OS file watcher limits (Fixes Next.js OS file watch limit reached)..."
 if ! grep -q "fs.inotify.max_user_watches" /etc/sysctl.conf 2>/dev/null; then
