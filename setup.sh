@@ -241,6 +241,9 @@ if [ -n "$OPENAI_API_KEY" ]; then echo "OPENAI_API_KEY=\"$OPENAI_API_KEY\"" >> .
 
 mkdir -p /opt/postiz/uploads/
 
+echo "    -> Injecting Server IP into Next.js Config to fix WebSocket DevTools freezing..."
+sed -i "s/__DYNAMIC_IP__/${SERVER_IP}/g" apps/frontend/next.config.js 2>/dev/null || true
+
 echo "==> [8/9] Installing npm dependencies and migrating DB..."
 if [[ "$INSTALL_MODE" == "clean" ]]; then
     echo "    -> Clean install requested! Wiping node_modules to ensure a fresh installation..."

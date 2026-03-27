@@ -21,7 +21,7 @@ const nextConfig = {
     ];
   },
   // Allows the remote VPS to connect to Next.js HMR websockets without freezing
-  allowedDevOrigins: process.env.FRONTEND_URL ? [new URL(process.env.FRONTEND_URL).hostname] : undefined,
+  allowedDevOrigins: ['__DYNAMIC_IP__', 'localhost'],
   reactStrictMode: false,
   transpilePackages: ['crypto-hash'],
   // Enable production sourcemaps for Sentry
