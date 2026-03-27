@@ -183,6 +183,18 @@ EOF
 echo "    -> Starting Temporal, Redis, and Postgres in the background..."
 docker compose up -d postiz-postgres postiz-redis temporal temporal-postgresql temporal-elasticsearch || true
 
+echo "    -> Waiting for Temporal, Redis, and Postgres to securely initialize (up to 120s)..."
+for i in {1..24}; do
+    if (echo > /dev/tcp/127.0.0.1/5432) >/dev/null 2>&1 && \
+       (echo > /dev/tcp/127.0.0.1/6379) >/dev/null 2>&1 && \
+       (echo > /dev/tcp/127.0.0.1/7233) >/dev/null 2>&1; then
+        echo "       - All databases securely initialized and ready!"
+        break
+    fi
+    echo "       - Waiting 5s for databases to boot..."
+    sleep 5
+done
+
 echo "==> [6/9] Setting up postiz-app source code..."
 cd "$DIR"
 if [ ! -d "postiz-app/.git" ]; then
@@ -264,8 +276,6 @@ pkill -f "next dev" || true
 pkill -f "node" || true 
 
 echo "    -> Starting 'pnpm run dev' with expanded Node RAM limits in the background..."
-echo "       [!] Pausing 45 seconds to allow Temporal and Postgres to fully initialize schemas to protect NestJS backend from crashing..."
-sleep 45
 export NODE_OPTIONS="--max-old-space-size=8192"
 nohup pnpm run dev > dev.log 2>&1 &
 
