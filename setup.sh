@@ -127,10 +127,10 @@ else
     echo "       - System Swap is already configured."
 fi
 
-echo "==> [2/9] Checking Node.js 18+..."
+echo "==> [2/9] Checking Node.js 22.x..."
 if ! command -v node &> /dev/null; then
-    echo "    -> Installing Node.js 18..."
-    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    echo "    -> Installing Node.js 22..."
+    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
     sudo apt-get install -y nodejs
 else
     echo "    -> Node.js is already installed: $(node -v)"
