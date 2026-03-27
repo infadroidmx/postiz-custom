@@ -110,6 +110,10 @@ else
     sysctl -p >/dev/null 2>&1 || true
 fi
 
+echo "    -> Forwarding VPS Firewall Ports for Backend/Frontend APIs..."
+ufw allow 4200/tcp >/dev/null 2>&1 || true
+ufw allow 3000/tcp >/dev/null 2>&1 || true
+
 echo "    -> Checking System Swap Space (Fixes Exit Code 137 / Out of Memory)..."
 if ! swapon --show | grep -q 'swap'; then
     echo "       - No swap file detected! Generating a 4GB Swap File to protect RAM..."
