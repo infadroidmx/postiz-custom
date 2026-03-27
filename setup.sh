@@ -181,8 +181,9 @@ docker compose up -d postiz-postgres postiz-redis temporal temporal-postgresql t
 
 echo "==> [6/9] Setting up postiz-app source code..."
 cd "$DIR"
-if [ ! -d "postiz-app" ]; then
-    echo "    -> Cloning custom postiz-app repository..."
+if [ ! -d "postiz-app/.git" ]; then
+    echo "    -> Cloning custom postiz-app repository (forcing fresh clone if corrupted)..."
+    rm -rf postiz-app 2>/dev/null || true
     git clone https://github.com/infadroidmx/postiz-custom.git postiz-app
     cd postiz-app
 else
