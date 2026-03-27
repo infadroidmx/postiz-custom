@@ -1,4 +1,4 @@
-{
+﻿{
   "calendar": "カレンダー",
   "webhooks": "ウェブフック",
   "webhooks_are_a_way_to_get_notified_when_something_happens_in_postiz_via_an_http_request": "ウェブフックは、Postizで何かが起こったときにHTTPリクエストを通じて通知を受け取る方法です。",
@@ -38,12 +38,12 @@
   "connect": "接続",
   "public_api": "パブリックAPI",
   "check_n8n": "Postiz用のカスタムN8Nノードをご覧ください。",
-  "use_postiz_api_to_integrate_with_your_tools": "Postiz APIを使ってあなたのツールと連携しましょう。",
+  "use_postiz_api_to_integrate_with_your_tools": "Infinate Post APIを使ってあなたのツールと連携しましょう。",
   "read_how_to_use_it_over_the_documentation": "ドキュメントで使い方を確認してください。",
   "reveal": "表示",
   "copy_key": "キーをコピー",
   "mcp": "MCP",
-  "connect_your_mcp_client_to_postiz_to_schedule_your_posts_faster": "投稿をより迅速にスケジュールするために、Postiz MCPサーバーをクライアント（HTTPストリーミング）に接続しましょう！",
+  "connect_your_mcp_client_to_postiz_to_schedule_your_posts_faster": "投稿をより迅速にスケジュールするために、Infinate Post MCPサーバーをクライアント（HTTPストリーミング）に接続しましょう！",
   "share_with_a_client": "クライアントと共有",
   "post": "投稿",
   "comments": "コメント",
