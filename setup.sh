@@ -171,13 +171,13 @@ cat << EOF > docker-compose.override.yml
 services:
   postiz-postgres:
     environment:
-      POSTGRES_USER: $POSTIZ_DB_USER
-      POSTGRES_PASSWORD: $POSTIZ_DB_PASS
+      POSTGRES_USER: \$POSTIZ_DB_USER
+      POSTGRES_PASSWORD: \$POSTIZ_DB_PASS
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
   postiz-redis:
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
 EOF
 
 echo "    -> Starting Temporal, Redis, and Postgres in the background..."
