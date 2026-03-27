@@ -196,7 +196,7 @@ fi
 echo "==> [7/9] Configuring .env file..."
 
 echo "    -> Detecting Server IP (IPv4)..."
-SERVER_IP=$(curl -4 -s ifconfig.me || curl -4 -s api.ipify.org || echo "localhost")
+SERVER_IP=$(/usr/bin/curl -4 -s ifconfig.me || wget -qO- ifconfig.me || /usr/bin/wget -qO- api.ipify.org || echo "localhost")
 echo "    -> Server IP detected as: $SERVER_IP"
 
 echo "    -> Building .env file with your configured options..."
