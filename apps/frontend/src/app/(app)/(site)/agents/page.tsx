@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: 'Postiz - Agent',
+  title: 'Infinate Post - Agent',
   description: '',
 };
 
