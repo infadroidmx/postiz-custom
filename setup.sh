@@ -264,6 +264,8 @@ pkill -f "next dev" || true
 pkill -f "node" || true 
 
 echo "    -> Starting 'pnpm run dev' with expanded Node RAM limits in the background..."
+echo "       [!] Pausing 45 seconds to allow Temporal and Postgres to fully initialize schemas to protect NestJS backend from crashing..."
+sleep 45
 export NODE_OPTIONS="--max-old-space-size=8192"
 nohup pnpm run dev > dev.log 2>&1 &
 
