@@ -245,10 +245,10 @@ echo "    -> Injecting Server IP into Next.js Config to fix WebSocket DevTools f
 sed -i "s/__DYNAMIC_IP__/${SERVER_IP}/g" apps/frontend/next.config.js 2>/dev/null || true
 
 echo "==> [8/9] Installing npm dependencies and migrating DB..."
-if [[ "$INSTALL_MODE" == "clean" ]]; then
-    echo "    -> Clean install requested! Wiping node_modules to ensure a fresh installation..."
-    rm -rf node_modules apps/*/node_modules libraries/*/node_modules 2>/dev/null || true
-fi
+echo "    -> Wiping node_modules to guarantee non-corrupted PNPM symlinks for NEXT.js..."
+rm -rf node_modules apps/*/node_modules libraries/*/node_modules 2>/dev/null || true
+
+pnpm install
 
 pnpm install
 pnpm run prisma-db-push
