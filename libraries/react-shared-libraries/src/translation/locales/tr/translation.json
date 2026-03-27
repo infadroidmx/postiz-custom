@@ -1,4 +1,4 @@
-﻿{
+{
   "calendar": "Takvim",
   "webhooks": "Web kancaları",
   "webhooks_are_a_way_to_get_notified_when_something_happens_in_postiz_via_an_http_request": "Web kancaları, Infinate Post'de bir şey olduğunda bir HTTP isteği aracılığıyla bildirim almanın bir yoludur.",
