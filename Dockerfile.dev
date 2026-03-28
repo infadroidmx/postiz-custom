@@ -38,6 +38,11 @@ RUN pnpm install --no-frozen-lockfile --ignore-scripts
 # Now copy the rest of your code
 COPY . /app
 COPY var/docker/nginx.conf /etc/nginx/nginx.conf
+
+# FINAL INSTALL: This resolve all workspace links now that the folders exist.
+# Since the previous step already cached everything, this will take seconds.
+RUN pnpm install
+
 RUN pnpm run prisma-generate
 RUN NODE_OPTIONS="--max-old-space-size=4096" pnpm run build
 
