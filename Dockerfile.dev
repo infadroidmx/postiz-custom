@@ -38,18 +38,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN npm --no-update-notifier --no-fund --global install pnpm@10.6.1 pm2
 
-# Copy necessary files from builder
-COPY --from=builder /app/package.json /app/pnpm-lock.yaml /app/pnpm-workspace.yaml ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/apps/frontend/.next ./apps/frontend/.next
-COPY --from=builder /app/apps/frontend/public ./apps/frontend/public
-COPY --from=builder /app/apps/backend/dist ./apps/backend/dist
-COPY --from=builder /app/apps/orchestrator/dist ./apps/orchestrator/dist
-COPY --from=builder /app/apps/frontend/package.json ./apps/frontend/package.json
-COPY --from=builder /app/apps/backend/package.json ./apps/backend/package.json
-COPY --from=builder /app/apps/orchestrator/package.json ./apps/orchestrator/package.json
-COPY --from=builder /app/libraries ./libraries
+# Copy full context from builder to preserve symlinks and relative paths
+COPY --from=builder /app /app
 COPY --from=builder /app/var/docker/nginx.conf /etc/nginx/nginx.conf
+
+# Ensure a .env file exists for the backend start scripts
+RUN touch .env
 
 # Setup nginx user
 RUN addgroup --system www \
