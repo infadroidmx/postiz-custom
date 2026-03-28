@@ -19,10 +19,20 @@ RUN npm --no-update-notifier --no-fund --global install pnpm@10.6.1 pm2
 
 WORKDIR /app
 
+# --- OPTIMIZATION START ---
+# Only copy the files that define your dependencies first
+# This catches everything in the workspace
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/*/package.json ./apps/
+COPY libraries/*/package.json ./libraries/
+
+# Run install. This will stay cached unless you add a new library!
+RUN pnpm install --no-frozen-lockfile
+# --- OPTIMIZATION END ---
+
+# Now copy the rest of your code
 COPY . /app
 COPY var/docker/nginx.conf /etc/nginx/nginx.conf
-
-RUN pnpm install
 RUN NODE_OPTIONS="--max-old-space-size=4096" pnpm run build
 
 CMD ["sh", "-c", "nginx && pnpm run pm2"]
