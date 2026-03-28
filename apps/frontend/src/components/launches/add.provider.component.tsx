@@ -372,6 +372,7 @@ export const AddProviderComponent: FC<{
       validation: string;
       type: 'text' | 'password';
     }>;
+    isEnabled: boolean;
   }>;
   article: Array<{
     identifier: string;
@@ -614,8 +615,8 @@ export const AddProviderComponent: FC<{
       <div className="flex flex-col">
         <div
           className={clsx(
-            'grid grid-cols-5 gap-[10px] justify-items-center justify-center',
-            onboarding ? 'grid-cols-9' : 'grid-cols-5'
+            'grid gap-[10px] justify-items-center justify-center w-full',
+            onboarding ? 'grid-cols-3 xs:grid-cols-5 sm:grid-cols-7 lg:grid-cols-9' : 'grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5'
           )}
         >
           {social
@@ -634,23 +635,24 @@ export const AddProviderComponent: FC<{
             .map((item) => (
               <div
                 key={item.identifier}
-                onClick={getSocialLink(
+                onClick={item.isEnabled ? getSocialLink(
                   props.invite,
                   item.identifier,
                   item.isExternal,
                   item.isWeb3,
                   item.isChromeExtension,
                   item.customFields
-                )}
-                {...(!!item.toolTip
+                ) : undefined}
+                {...(!!item.toolTip || !item.isEnabled
                   ? {
                       'data-tooltip-id': 'tooltip',
-                      'data-tooltip-content': item.toolTip,
+                      'data-tooltip-content': item.isEnabled ? item.toolTip : `${item.toolTip ? item.toolTip + ' - ' : ''}${t('configuration_required', 'Configuration Required')}`,
                     }
                   : {})}
-                className={
-                  'w-full h-[100px] text-[14px] p-[10px] rounded-[8px] bg-newTableHeader text-textColor relative justify-center items-center flex flex-col gap-[10px] cursor-pointer'
-                }
+                className={clsx(
+                  'w-full h-[100px] text-[14px] p-[10px] rounded-[8px] bg-newTableHeader text-textColor relative justify-center items-center flex flex-col gap-[10px]',
+                  item.isEnabled ? 'cursor-pointer hover:bg-newTableHeader/80' : 'cursor-not-allowed opacity-50 grayscale'
+                )}
               >
                 <div>
                   {item.identifier === 'youtube' ? (
