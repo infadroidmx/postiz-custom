@@ -24,6 +24,9 @@ COPY apps/commands/package.json ./apps/commands/
 COPY apps/cli/package.json ./apps/cli/
 COPY apps/extension/package.json ./apps/extension/
 COPY apps/sdk/package.json ./apps/sdk/
+COPY libraries/nestjs-libraries/package.json ./libraries/nestjs-libraries/
+COPY libraries/helpers/package.json ./libraries/helpers/
+COPY libraries/react-shared-libraries/tsconfig.json ./libraries/react-shared-libraries/
 
 # Initial install
 RUN pnpm install --no-frozen-lockfile --ignore-scripts

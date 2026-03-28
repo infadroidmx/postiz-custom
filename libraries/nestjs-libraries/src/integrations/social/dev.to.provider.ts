@@ -12,6 +12,9 @@ import { DevToSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers
 import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
 
 export class DevToProvider extends SocialAbstract implements SocialProvider {
+  override async isConfigured() {
+    return true;
+  }
   override maxConcurrentJob = 3; // Dev.to has moderate publishing limits
   identifier = 'devto';
   name = 'Dev.to';

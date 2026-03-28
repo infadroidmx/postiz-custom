@@ -10,6 +10,17 @@
     "start": "dotenv -e ../../.env -- next start -p 4200",
     "pm2": "pm2 start pnpm --name frontend -- start"
   },
+  "dependencies": {
+    "@blueprintjs/core": "^5.19.0",
+    "@blueprintjs/icons": "^5.12.0",
+    "@copilotkit/runtime-client-gql": "^1.10.6",
+    "@floating-ui/dom": "^1.6.0",
+    "@solana/wallet-adapter-base": "^0.9.22",
+    "@solana/wallet-adapter-base-ui": "^0.1.2",
+    "@solana/web3.js": "^1.91.0",
+    "@tiptap/extensions": "^2.4.0",
+    "mobx-react-lite": "^4.0.7"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

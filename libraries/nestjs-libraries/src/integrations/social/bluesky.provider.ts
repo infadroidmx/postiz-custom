@@ -146,6 +146,9 @@ async function uploadVideo(
   'Bluesky can have maximum 1 video or 4 pictures in one post, it can also be without attachments'
 )
 export class BlueskyProvider extends SocialAbstract implements SocialProvider {
+  override async isConfigured() {
+    return true;
+  }
   override maxConcurrentJob = 2; // Bluesky has moderate rate limits
   identifier = 'bluesky';
   name = 'Bluesky';

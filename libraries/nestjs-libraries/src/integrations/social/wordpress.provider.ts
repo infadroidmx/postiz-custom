@@ -19,6 +19,9 @@ export class WordpressProvider
   extends SocialAbstract
   implements SocialProvider
 {
+  override async isConfigured() {
+    return true;
+  }
   identifier = 'wordpress';
   name = 'WordPress';
   isBetweenSteps = false;
