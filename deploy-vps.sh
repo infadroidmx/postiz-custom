@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Configuration
 REPO_URL="https://github.com/infadroidmx/postiz-custom.git"
