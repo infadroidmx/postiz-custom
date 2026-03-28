@@ -38,18 +38,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN npm --no-update-notifier --no-fund --global install pnpm@10.6.1 pm2
 
+# Setup runner environment
+RUN mkdir -p /app
+WORKDIR /app
+
 # Copy full context from builder to preserve symlinks and relative paths
 COPY --from=builder /app /app
 COPY --from=builder /app/var/docker/nginx.conf /etc/nginx/nginx.conf
 
 # Ensure a .env file exists for the backend start scripts
 RUN touch .env
-
-# Setup nginx user
-RUN addgroup --system www \
- && adduser --system --ingroup www --home /www --shell /usr/sbin/nologin www \
- && mkdir -p /www \
- && chown -R www:www /www /var/lib/nginx /app
 
 EXPOSE 5000
 
