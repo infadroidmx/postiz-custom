@@ -27,6 +27,9 @@ const list = [
 const pool = new SimplePool();
 
 export class NostrProvider extends SocialAbstract implements SocialProvider {
+  override async isConfigured() {
+    return true;
+  }
   override maxConcurrentJob = 5;
   identifier = 'nostr';
   name = 'Nostr';

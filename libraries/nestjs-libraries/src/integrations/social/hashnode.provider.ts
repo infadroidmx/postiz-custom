@@ -14,6 +14,9 @@ import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
 import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
 
 export class HashnodeProvider extends SocialAbstract implements SocialProvider {
+  override async isConfigured() {
+    return true;
+  }
   override maxConcurrentJob = 3; // Hashnode has lenient publishing limits
   identifier = 'hashnode';
   name = 'Hashnode';

@@ -12,6 +12,9 @@ import { MediumSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/provider
 import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
 
 export class MediumProvider extends SocialAbstract implements SocialProvider {
+  override async isConfigured() {
+    return true;
+  }
   override maxConcurrentJob = 3; // Medium has lenient publishing limits
   identifier = 'medium';
   name = 'Medium';
