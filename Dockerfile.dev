@@ -15,21 +15,9 @@ RUN npm --no-update-notifier --no-fund --global install pnpm@10.6.1
 
 WORKDIR /app
 
-# Copy dependency files
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/frontend/package.json ./apps/frontend/
-COPY apps/backend/package.json ./apps/backend/
-COPY apps/orchestrator/package.json ./apps/orchestrator/
-COPY apps/commands/package.json ./apps/commands/
-COPY apps/cli/package.json ./apps/cli/
-COPY apps/extension/package.json ./apps/extension/
-COPY apps/sdk/package.json ./apps/sdk/
-
-# Initial install
-RUN pnpm install --no-frozen-lockfile --ignore-scripts
-
-# Copy source
+# Copy context and install
 COPY . .
+RUN pnpm install --no-frozen-lockfile --ignore-scripts
 
 # Generate Prisma and build
 RUN pnpm run prisma-generate
