@@ -30,9 +30,4 @@ echo "${GH_TOKEN}" | docker login ghcr.io -u "${GH_USER}" --password-stdin
 echo "Pushing image..."
 docker push "${IMAGE_NAME}:latest"
 
-# Pull and Update the running container
-echo "Pulling the new image and updating the container..."
-docker compose pull postiz
-docker compose up -d postiz
-
 echo "Deployment update complete."
