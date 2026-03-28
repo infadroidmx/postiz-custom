@@ -3,7 +3,7 @@ set -e
 
 # Configuration
 REPO_URL="https://github.com/infadroidmx/postiz-custom.git"
-IMAGE_NAME="ghcr.io/infadroidmx/infinate-posts"
+IMAGE_NAME="ghcr.io/infadroidmx/infinate-post"
 GH_USER="infadroidmx"
 GH_TOKEN="${GH_TOKEN:-}" # User should set this in environment
 
@@ -29,5 +29,10 @@ echo "Logging in to GHCR..."
 echo "${GH_TOKEN}" | docker login ghcr.io -u "${GH_USER}" --password-stdin
 echo "Pushing image..."
 docker push "${IMAGE_NAME}:latest"
+
+# Pull and Update the running container
+echo "Pulling the new image and updating the container..."
+docker compose pull postiz
+docker compose up -d postiz
 
 echo "Deployment update complete."
