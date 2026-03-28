@@ -1,4 +1,4 @@
-﻿import { internalFetch } from '@gitroom/helpers/utils/internal.fetch';
+import { internalFetch } from '@gitroom/helpers/utils/internal.fetch';
 export const dynamic = 'force-dynamic';
 import { Register } from '@gitroom/frontend/components/auth/register';
 import { Metadata } from 'next';

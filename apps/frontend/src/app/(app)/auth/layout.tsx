@@ -1,4 +1,4 @@
-﻿import { getT } from '@gitroom/react/translation/get.translation.service.backend';
+import { getT } from '@gitroom/react/translation/get.translation.service.backend';
 
 export const dynamic = 'force-dynamic';
 import { ReactNode } from 'react';
