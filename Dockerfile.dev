@@ -51,12 +51,6 @@ COPY --from=builder /app/apps/orchestrator/package.json ./apps/orchestrator/pack
 COPY --from=builder /app/libraries ./libraries
 COPY --from=builder /app/var/docker/nginx.conf /etc/nginx/nginx.conf
 
-# Setup nginx user
-RUN addgroup --system www \
- && adduser --system --ingroup www --home /www --shell /usr/sbin/nologin www \
- && mkdir -p /www \
- && chown -R www:www /www /var/lib/nginx /app
-
 EXPOSE 5000
 
 CMD ["sh", "-c", "nginx && pnpm run pm2"]
