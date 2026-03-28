@@ -651,7 +651,7 @@ export const AddProviderComponent: FC<{
                   : {})}
                 className={clsx(
                   'w-full h-[100px] text-[14px] p-[10px] rounded-[8px] bg-newTableHeader text-textColor relative justify-center items-center flex flex-col gap-[10px]',
-                  item.isEnabled ? 'cursor-pointer hover:bg-newTableHeader/80' : 'cursor-not-allowed opacity-50 grayscale'
+                  item.isEnabled ? 'cursor-pointer hover:bg-newTableHeader/80' : 'cursor-not-allowed opacity-50 grayscale-[100%] brightness-50 pointer-events-none'
                 )}
               >
                 <div>
