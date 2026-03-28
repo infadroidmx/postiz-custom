@@ -23,8 +23,16 @@ WORKDIR /app
 # Only copy the files that define your dependencies first
 # This catches everything in the workspace
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/*/package.json ./apps/
-COPY libraries/*/package.json ./libraries/
+COPY apps/frontend/package.json ./apps/frontend/
+COPY apps/backend/package.json ./apps/backend/
+COPY apps/orchestrator/package.json ./apps/orchestrator/
+COPY apps/commands/package.json ./apps/commands/
+COPY apps/cli/package.json ./apps/cli/
+COPY apps/extension/package.json ./apps/extension/
+COPY apps/sdk/package.json ./apps/sdk/
+COPY libraries/helpers/package.json ./libraries/helpers/
+COPY libraries/nestjs-libraries/package.json ./libraries/nestjs-libraries/
+COPY libraries/react-shared-libraries/package.json ./libraries/react-shared-libraries/
 
 # Run install. This will stay cached unless you add a new library!
 RUN pnpm install --no-frozen-lockfile --ignore-scripts
