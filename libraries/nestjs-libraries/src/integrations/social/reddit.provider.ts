@@ -23,6 +23,11 @@ export class RedditProvider extends SocialAbstract implements SocialProvider {
   identifier = 'reddit';
   name = 'Reddit';
   isBetweenSteps = false;
+
+  async isConfigured() {
+    return !!process.env.REDDIT_CLIENT_ID && !!process.env.REDDIT_CLIENT_SECRET;
+  }
+
   scopes = ['read', 'identity', 'submit', 'flair'];
   editor = 'normal' as const;
   dto = RedditSettingsDto;

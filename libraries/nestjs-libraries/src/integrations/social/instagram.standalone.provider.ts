@@ -23,6 +23,11 @@ export class InstagramStandaloneProvider
 {
   identifier = 'instagram-standalone';
   name = 'Instagram\n(Standalone)';
+
+  async isConfigured() {
+    return !!process.env.INSTAGRAM_APP_ID && !!process.env.INSTAGRAM_APP_SECRET;
+  }
+
   isBetweenSteps = false;
   refreshCron = true;
   scopes = [

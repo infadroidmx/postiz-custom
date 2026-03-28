@@ -13,6 +13,11 @@ export class MastodonProvider extends SocialAbstract implements SocialProvider {
   override maxConcurrentJob = 5; // Mastodon instances typically have generous limits
   identifier = 'mastodon';
   name = 'Mastodon';
+
+  async isConfigured() {
+    return !!process.env.MASTODON_CLIENT_ID && !!process.env.MASTODON_CLIENT_SECRET;
+  }
+
   isBetweenSteps = false;
   scopes = ['write:statuses', 'profile', 'write:media'];
   editor = 'normal' as const;

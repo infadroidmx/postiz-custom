@@ -22,6 +22,11 @@ export class TelegramProvider extends SocialAbstract implements SocialProvider {
   override maxConcurrentJob = 3; // Telegram has moderate bot API limits
   identifier = 'telegram';
   name = 'Telegram';
+
+  async isConfigured() {
+    return !!process.env.TELEGRAM_TOKEN;
+  }
+
   isBetweenSteps = false;
   isWeb3 = true;
   scopes = [] as string[];

@@ -15,6 +15,11 @@ export class KickProvider extends SocialAbstract implements SocialProvider {
   override maxConcurrentJob = 3;
   identifier = 'kick';
   name = 'Kick';
+
+  async isConfigured() {
+    return !!process.env.KICK_CLIENT_ID && !!process.env.KICK_SECRET;
+  }
+
   isBetweenSteps = false;
   editor = 'normal' as const;
   scopes = ['chat:write', 'user:read', 'channel:read'];

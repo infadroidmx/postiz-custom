@@ -143,6 +143,7 @@ export interface SocialProvider
   convertToJPEG?: boolean;
   refreshCron?: boolean;
   dto?: any;
+  isConfigured(): Promise<boolean>;
   maxLength: (additionalSettings?: any) => number;
   isWeb3?: boolean;
   isChromeExtension?: boolean;

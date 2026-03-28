@@ -17,6 +17,11 @@ import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validatio
 export class ThreadsProvider extends SocialAbstract implements SocialProvider {
   identifier = 'threads';
   name = 'Threads';
+
+  async isConfigured() {
+    return !!process.env.THREADS_APP_ID && !!process.env.THREADS_APP_SECRET;
+  }
+
   isBetweenSteps = false;
   scopes = [
     'threads_basic',

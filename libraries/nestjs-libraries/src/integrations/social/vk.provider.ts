@@ -17,6 +17,11 @@ export class VkProvider extends SocialAbstract implements SocialProvider {
   override maxConcurrentJob = 2; // VK has moderate API limits
   identifier = 'vk';
   name = 'VK';
+
+  async isConfigured() {
+    return !!process.env.VK_ID;
+  }
+
   isBetweenSteps = false;
   scopes = [
     'vkid.personal_info',

@@ -18,6 +18,11 @@ export class DribbbleProvider extends SocialAbstract implements SocialProvider {
   override maxConcurrentJob = 3; // Dribbble has moderate API limits
   identifier = 'dribbble';
   name = 'Dribbble';
+
+  async isConfigured() {
+    return !!process.env.DRIBBBLE_CLIENT_ID && !!process.env.DRIBBBLE_CLIENT_SECRET;
+  }
+
   isBetweenSteps = false;
   scopes = ['public', 'upload'];
   editor = 'normal' as const;

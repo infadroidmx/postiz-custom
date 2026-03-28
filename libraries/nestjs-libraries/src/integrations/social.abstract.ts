@@ -50,6 +50,10 @@ export abstract class SocialAbstract {
   abstract identifier: string;
   maxConcurrentJob = 1;
 
+  async isConfigured() {
+    return true;
+  }
+
   public handleErrors(
     body: string
   ):

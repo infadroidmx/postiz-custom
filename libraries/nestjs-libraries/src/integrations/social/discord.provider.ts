@@ -14,6 +14,11 @@ export class DiscordProvider extends SocialAbstract implements SocialProvider {
   override maxConcurrentJob = 5; // Discord has generous rate limits for webhook posting
   identifier = 'discord';
   name = 'Discord';
+
+  async isConfigured() {
+    return !!process.env.DISCORD_CLIENT_ID && !!process.env.DISCORD_CLIENT_SECRET && !!process.env.DISCORD_BOT_TOKEN_ID;
+  }
+
   isBetweenSteps = false;
   editor = 'markdown' as const;
   scopes = ['identify', 'guilds'];

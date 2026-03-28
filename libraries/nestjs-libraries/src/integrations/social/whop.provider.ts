@@ -16,6 +16,11 @@ import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
 export class WhopProvider extends SocialAbstract implements SocialProvider {
   identifier = 'whop';
   name = 'Whop';
+
+  async isConfigured() {
+    return !!process.env.WHOP_CLIENT_ID;
+  }
+
   isBetweenSteps = false;
   scopes = ['openid', 'profile', 'email', 'forum:post:create', 'forum:read', 'company:basic:read'];
   refreshCron = false;

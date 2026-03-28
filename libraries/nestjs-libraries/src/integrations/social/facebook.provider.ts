@@ -15,6 +15,11 @@ import { Integration } from '@prisma/client';
 export class FacebookProvider extends SocialAbstract implements SocialProvider {
   identifier = 'facebook';
   name = 'Facebook Page';
+
+  async isConfigured() {
+    return !!process.env.FACEBOOK_APP_ID && !!process.env.FACEBOOK_APP_SECRET;
+  }
+
   isBetweenSteps = true;
   scopes = [
     'pages_show_list',

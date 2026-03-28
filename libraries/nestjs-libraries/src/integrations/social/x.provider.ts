@@ -27,6 +27,9 @@ export class XProvider extends SocialAbstract implements SocialProvider {
   identifier = 'x';
   name = 'X';
   isBetweenSteps = false;
+  async isConfigured() {
+    return !!process.env.X_API_KEY && !!process.env.X_API_SECRET;
+  }
   scopes = [] as string[];
   override maxConcurrentJob = 1; // X has strict rate limits (300 posts per 3 hours)
   toolTip =

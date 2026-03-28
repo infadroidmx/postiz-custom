@@ -14,6 +14,11 @@ import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
 export class MeweProvider extends SocialAbstract implements SocialProvider {
   identifier = 'mewe';
   name = 'MeWe';
+
+  async isConfigured() {
+    return !!process.env.MEWE_APP_ID && !!process.env.MEWE_API_KEY;
+  }
+
   isBetweenSteps = false;
   scopes = [] as string[];
   editor = 'normal' as const;

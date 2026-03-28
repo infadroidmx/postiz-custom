@@ -24,6 +24,11 @@ export class PinterestProvider
 {
   identifier = 'pinterest';
   name = 'Pinterest';
+
+  async isConfigured() {
+    return !!process.env.PINTEREST_CLIENT_ID && !!process.env.PINTEREST_CLIENT_SECRET;
+  }
+
   isBetweenSteps = false;
   scopes = [
     'boards:read',

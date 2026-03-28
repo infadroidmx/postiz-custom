@@ -24,6 +24,10 @@ export class LinkedinProvider extends SocialAbstract implements SocialProvider {
   name = 'LinkedIn';
   oneTimeToken = true;
 
+  async isConfigured() {
+    return !!process.env.LINKEDIN_CLIENT_ID && !!process.env.LINKEDIN_CLIENT_SECRET;
+  }
+
   isBetweenSteps = false;
   scopes = [
     'openid',

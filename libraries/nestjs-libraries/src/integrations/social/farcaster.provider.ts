@@ -26,6 +26,11 @@ export class FarcasterProvider
 {
   identifier = 'wrapcast';
   name = 'Farcaster';
+
+  async isConfigured() {
+    return !!process.env.NEYNAR_SECRET_KEY && !!process.env.NEYNAR_CLIENT_ID;
+  }
+
   isBetweenSteps = false;
   isWeb3 = true;
   scopes = [] as string[];
