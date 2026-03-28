@@ -19,7 +19,9 @@
     "@solana/wallet-adapter-base-ui": "^0.1.2",
     "@solana/web3.js": "^1.98.0",
     "@tiptap/extensions": "^3.0.6",
-    "mobx-react-lite": "^4.0.7"
+    "mobx-react-lite": "^4.0.7",
+    "slate": "0.94.1",
+    "slate-react": "0.98.4"
   },
   "keywords": [],
   "author": "",
